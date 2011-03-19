@@ -12,9 +12,10 @@
 		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 		
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-		<!--
-		<script type="text/javascript" src="js/grid.js"></script>
-		-->
+		<script type="text/javascript" src="/js/history.adapter.jquery.js"></script>
+		<script type="text/javascript" src="/js/history.js"></script>
+		<script type="text/javascript" src="/js/history.html4.js"></script>
+		
 		
 	<script type="text/javascript" charset="utf-8">
 	
@@ -25,29 +26,36 @@
 			  init();
 			});
 			
-      <%= '$("#badge").hide();$("#educate").hide();' if (tag != 'educate' && tag != 'badge') %>
-      <%= '$("#badge").hide();' if tag == 'educate' %>
-      <%= '$("#educate").hide();' if tag == 'badge' %>
+      <%= '$("#badge").hide();$("#educate").hide();' if (tag != 'educate-others' && tag != 'join-the-cause') %>
+      <%= '$("#badge").hide();$("#action").hide();' if tag == 'educate-others' %>
+      <%= '$("#educate").hide();$("#action").hide();' if tag == 'join-the-cause' %>
 			
 			//$("#badge").hide();
 			//$("#educate").hide();
 			
 			$("#badge_link").click(function(){
+				event.preventDefault();
 				$("#badge").show();
 				$("#educate").hide();
 				$("#action").hide();
+				History.pushState('join-the-cause', null, 'join-the-cause');
+				
 			});
 
 			$("#educate_link").click(function(){
+				event.preventDefault();
 				$("#educate").show();
 				$("#badge").hide();
 				$("#action").hide();
+				History.pushState('educate-others', null, 'educate-others');
 			});
 			
 			$(".back_link").click(function(){
+				event.preventDefault();
 				$("#educate").hide();
 				$("#badge").hide();
 				$("#action").show();
+				History.pushState(null , null, '/');
 			});
 			
 			
@@ -497,8 +505,6 @@
 	</head>
 	
 	<body lang="en">
-		
-		<div id="grid">&nbsp;</div>
 		
 		<header>
 			<h1>The Internet Explorer&nbsp;7 Countdown</h1>
