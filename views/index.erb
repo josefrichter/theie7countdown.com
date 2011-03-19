@@ -25,8 +25,12 @@
 			  init();
 			});
 			
-			$("#badge").hide();
-			$("#educate").hide();
+      <%= '$("#badge").hide();$("#educate").hide();' if (tag != 'educate' && tag != 'badge') %>
+      <%= '$("#badge").hide();' if tag == 'educate' %>
+      <%= '$("#educate").hide();' if tag == 'badge' %>
+			
+			//$("#badge").hide();
+			//$("#educate").hide();
 			
 			$("#badge_link").click(function(){
 				$("#badge").show();
