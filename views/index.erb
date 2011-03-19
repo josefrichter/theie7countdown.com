@@ -26,39 +26,40 @@
 			  init();
 			});
 			
-      <%= '$("#badge").hide();$("#educate").hide();' if (tag != 'educate-others' && tag != 'join-the-cause') %>
-      <%= '$("#badge").hide();$("#action").hide();' if tag == 'educate-others' %>
-      <%= '$("#educate").hide();$("#action").hide();' if tag == 'join-the-cause' %>
-			
-			//$("#badge").hide();
-			//$("#educate").hide();
-			
 			$("#badge_link").click(function(){
 				event.preventDefault();
-				$("#badge").show();
-				$("#educate").hide();
-				$("#action").hide();
 				History.pushState('join-the-cause', null, 'join-the-cause');
 				
 			});
 
 			$("#educate_link").click(function(){
 				event.preventDefault();
-				$("#educate").show();
-				$("#badge").hide();
-				$("#action").hide();
 				History.pushState('educate-others', null, 'educate-others');
 			});
 			
 			$(".back_link").click(function(){
 				event.preventDefault();
-				$("#educate").hide();
-				$("#badge").hide();
-				$("#action").show();
 				History.pushState(null , null, '/');
 			});
 			
-			
+	    History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+	        var hash = History.getStateHash(); // Note: We are using History.getState() instead of event.state
+					//alert(hash);
+	        //History.log(State.data, State.title, State.url);
+					if (hash=='/educate-others') {
+						$("#educate").show();
+						$("#badge").hide();
+						$("#action").hide();
+					} else if (hash == '/join-the-cause') {
+						$("#badge").show();
+						$("#educate").hide();
+						$("#action").hide();
+					} else {
+						$("#badge").hide();
+						$("#educate").hide();
+						$("#action").show();
+					}
+	    });
 			
 		});
 		
