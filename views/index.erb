@@ -18,7 +18,7 @@
 		
 		
 	<script type="text/javascript" charset="utf-8">
-	
+    // if html5history api is unsupported, reformat the URL with hash	
 		if ((History.emulated.pushState==true || History.emulated.hashChange==true) && document.location.hash == "" && document.location.pathname != "/") {
 			//console.log(document.location.protocol+"//"+document.location.host+"/#"+document.location.pathname)
 			var newURL = document.location.protocol+"//"+document.location.host+"/#"+document.location.pathname;
