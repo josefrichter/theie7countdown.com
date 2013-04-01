@@ -157,6 +157,10 @@ aside h2 {
 	margin-bottom:11px;
 }
 
+aside a {
+	color:white;
+}
+
 aside p {
 	margin: 0 0 16px 0;
 }

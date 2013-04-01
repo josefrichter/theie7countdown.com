@@ -2,13 +2,13 @@ require 'rubygems'
 require 'sinatra'
                                
 stats = {
-  :worldwide => 4,
-  :africa => 4,
-  :asia => 5,
-  :europe => 3,
-  :northamerica => 5,
-  :australia => 4,
-  :southamerica => 3
+  :worldwide => "<1",
+  :africa => "<1",
+  :asia => "<1",
+  :europe => "<1",
+  :northamerica => "<1",
+  :australia => "<1",
+  :southamerica => "<1"
   }
 
 get '/ie-users-info' do
